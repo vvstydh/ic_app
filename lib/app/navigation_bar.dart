@@ -24,6 +24,7 @@ class NavigationBarRouter extends StatelessWidget {
             backgroundColor: theme.colorScheme.primary,
             strokeColor: theme.colorScheme.secondary,
             unSelectedColor: theme.colorScheme.tertiary,
+            bubbleCurve: Curves.bounceInOut,
             items: [
               CustomNavigationBarItem(
                 icon: const Icon(
