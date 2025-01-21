@@ -1,7 +1,7 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ic_app/app/theme/theme.dart';
+import 'package:ic_app/core/app/theme/theme.dart';
 
 class NavigationBarRouter extends StatelessWidget {
   const NavigationBarRouter({super.key, required this.navigationShell});
@@ -23,7 +23,7 @@ class NavigationBarRouter extends StatelessWidget {
             selectedColor: theme.colorScheme.secondary,
             backgroundColor: theme.colorScheme.primary,
             strokeColor: theme.colorScheme.secondary,
-            unSelectedColor: theme.colorScheme.tertiary,
+            unSelectedColor: theme.colorScheme.onTertiary,
             bubbleCurve: Curves.bounceInOut,
             items: [
               CustomNavigationBarItem(

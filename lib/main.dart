@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ic_app/app/routes.dart';
+import 'package:ic_app/core/app/routes/routes.dart';
+import 'package:ic_app/core/config/app_config.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: AppConfig.supabaseUrl,
+    anonKey: AppConfig.supabaseAnonKey,
+  );
   runApp(const Routes());
 }

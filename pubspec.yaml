@@ -16,6 +16,8 @@ dependencies:
   another_flutter_splash_screen: ^1.2.1
   flutter_launcher_icons: ^0.14.3
   rename_app: ^1.6.2
+  swipe_refresh: ^1.1.2
+  supabase_flutter: ^2.8.3
 
 dev_dependencies:
   flutter_test:

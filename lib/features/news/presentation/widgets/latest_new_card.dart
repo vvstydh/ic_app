@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:ic_app/app/theme/theme.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ic_app/core/app/theme/theme.dart';
+import 'package:ic_app/features/news/domain/news_list.dart';
+import 'package:ic_app/features/news/presentation/widgets/big_image_widget.dart';
 
 class LatestNewCard extends StatelessWidget {
-  const LatestNewCard({super.key});
+  const LatestNewCard({
+    super.key,
+    required this.imageUrl,
+    required this.index,
+  });
+  final String imageUrl;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Container(
-        margin: EdgeInsets.all(5),
-        width: 300,
-        decoration: BoxDecoration(
-            color: theme.colorScheme.tertiary,
-            borderRadius: BorderRadius.all(Radius.circular(30))),
-      ),
-    );
+        onTap: () => context.go('/content', extra: index),
+        child: BigImageWidget(imageUrl: imageUrl));
   }
 }

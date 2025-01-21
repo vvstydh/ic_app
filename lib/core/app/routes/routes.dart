@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ic_app/app/navigation_bar.dart';
-import 'package:ic_app/app/theme/theme.dart';
-import 'package:ic_app/app/widgets/splash_screen.dart';
+import 'package:ic_app/core/app/widgets/navigation_bar.dart';
+import 'package:ic_app/core/app/theme/theme.dart';
+import 'package:ic_app/core/app/widgets/splash_screen.dart';
+import 'package:ic_app/features/news/domain/news_list.dart';
+import 'package:ic_app/features/news/presentation/pages/content_page.dart';
 import 'package:ic_app/features/news/presentation/pages/news_page.dart';
 import 'package:ic_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:ic_app/features/tests/presentation/pages/test_page.dart';
@@ -12,6 +14,10 @@ class Routes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final newsList = NewsList();
+
+    newsList.getNewsList();
+
     final router = GoRouter(
       initialLocation: '/',
       routes: [
@@ -21,6 +27,13 @@ class Routes extends StatelessWidget {
             return const GoRouterSplashScreen();
           },
         ),
+        GoRoute(
+          path: '/content',
+          builder: (context, state) => ContentPage(
+            newsList: newsList,
+            index: state.extra as int,
+          ),
+        ),
         StatefulShellRoute.indexedStack(
             builder: (context, state, navigationShell) =>
                 NavigationBarRouter(navigationShell: navigationShell),
@@ -28,7 +41,10 @@ class Routes extends StatelessWidget {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                      path: '/news', builder: (context, state) => NewsPage()),
+                      path: '/news',
+                      builder: (context, state) => NewsPage(
+                            newsList: newsList,
+                          )),
                 ],
               ),
               StatefulShellBranch(
@@ -42,7 +58,7 @@ class Routes extends StatelessWidget {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                    path: '/prifile',
+                    path: '/profile',
                     builder: (context, state) => const ProfilePage(),
                   ),
                 ],
