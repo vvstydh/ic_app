@@ -17,16 +17,17 @@ class PreviousNewsCard extends StatelessWidget {
     return InkWell(
       onTap: () => context.go('/content', extra: index),
       child: Container(
-        margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+        margin: EdgeInsets.fromLTRB(20, 10, 10, 0),
         height: 150,
         decoration: BoxDecoration(
           color: theme.colorScheme.tertiary,
           borderRadius: BorderRadius.all(Radius.circular(30)),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                blurRadius: 3,
-                offset: const Offset(0, 3)),
+              color: Colors.grey.withOpacity(0.5),
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
           ],
         ),
         child: Row(
@@ -44,9 +45,16 @@ class PreviousNewsCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  title,
-                  style: theme.textTheme.labelSmall,
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: 180,
+                  ),
+                  child: Text(
+                    title,
+                    style: theme.textTheme.labelMedium,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),

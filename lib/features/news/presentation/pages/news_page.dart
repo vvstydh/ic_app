@@ -33,7 +33,7 @@ class NewsPage extends StatelessWidget {
               await newsList.getNewsList();
               _controller.sink.add(SwipeRefreshState.hidden);
             },
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 120),
             children: [
               LatestNewsList(
                 newsList: newsList,

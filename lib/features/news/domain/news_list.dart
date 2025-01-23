@@ -20,6 +20,6 @@ abstract class NewsListStore with Store {
 
   Future<Iterable<Map<String, dynamic>>> fetchNewsList() async {
     final response = await supabase.from('news').select('*');
-    return List<Map<String, dynamic>>.from(response).reversed;
+    return List<Map<String, dynamic>>.from(response);
   }
 }
