@@ -16,7 +16,7 @@ class LatestNewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () => context.go('/content', extra: index),
+        onTap: () => context.push('/content', extra: index),
         child: BigImageWidget(imageUrl: imageUrl));
   }
 }

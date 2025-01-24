@@ -15,9 +15,9 @@ class PreviousNewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.go('/content', extra: index),
+      onTap: () => context.push('/content', extra: index),
       child: Container(
-        margin: EdgeInsets.fromLTRB(20, 10, 10, 0),
+        margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
         height: 150,
         decoration: BoxDecoration(
           color: theme.colorScheme.tertiary,
