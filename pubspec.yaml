@@ -30,12 +30,21 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/images/splash.png
+    - assets/images/logo.png
     - assets/images/icon.png
+    - assets/images/splash.gif
 
   fonts:
     - family: BebasNeue
       fonts:
         - asset: assets/fonts/Bebas-Neue-Bold.otf
         - asset: assets/fonts/Bebas-Neue-Regular.otf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Bold.ttf
+        - asset: assets/fonts/Montserrat-Light.ttf
+    - family: Helvetica
+      fonts:
+        - asset: assets/fonts/helvetica_bold.otf
+            
 

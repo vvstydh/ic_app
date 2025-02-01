@@ -16,10 +16,11 @@ class ContentPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       backgroundColor: theme.colorScheme.primary,
-      appBar: const AppAppbar(
+      appBar: AppAppbar(
         appBarText: 'Новости',
         height: 40,
         back: true,
+        color: theme.colorScheme.primary,
       ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
@@ -29,6 +30,7 @@ class ContentPage extends StatelessWidget {
             child: Text(
               item['title'],
               style: theme.textTheme.labelLarge,
+              textAlign: TextAlign.center,
             ),
           ),
           Text(

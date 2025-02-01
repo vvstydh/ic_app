@@ -6,8 +6,11 @@ import 'package:ic_app/core/app/widgets/splash_screen.dart';
 import 'package:ic_app/features/news/domain/news_list.dart';
 import 'package:ic_app/features/news/presentation/pages/content_page.dart';
 import 'package:ic_app/features/news/presentation/pages/news_page.dart';
-import 'package:ic_app/features/profile/presentation/pages/profile_page.dart';
-import 'package:ic_app/features/tests/presentation/pages/test_page.dart';
+import 'package:ic_app/features/profile/domain/user_data.dart';
+import 'package:ic_app/features/profile/presentation/pages/authentification_page.dart';
+import 'package:ic_app/features/profile/presentation/pages/profile_page_router.dart';
+import 'package:ic_app/features/profile/presentation/pages/registration_page.dart';
+import 'package:ic_app/features/diary/presentation/pages/diary_page.dart';
 
 class Routes extends StatelessWidget {
   const Routes({super.key});
@@ -15,8 +18,10 @@ class Routes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final newsList = NewsList();
+    final userData = UserData();
 
     newsList.getNewsList();
+    userData.userCheck();
 
     final router = GoRouter(
       initialLocation: '/',
@@ -24,7 +29,7 @@ class Routes extends StatelessWidget {
         GoRoute(
           path: '/',
           builder: (BuildContext context, GoRouterState state) {
-            return const GoRouterSplashScreen();
+            return GoRouterSplashScreen();
           },
         ),
         GoRoute(
@@ -34,6 +39,16 @@ class Routes extends StatelessWidget {
             index: state.extra as int,
           ),
         ),
+        GoRoute(
+            path: '/authentification',
+            builder: (context, state) => AuthentificationPage(
+                  userData: userData,
+                )),
+        GoRoute(
+            path: '/registration',
+            builder: (context, state) => RegistrationPage(
+                  userData: userData,
+                )),
         StatefulShellRoute.indexedStack(
             builder: (context, state, navigationShell) =>
                 NavigationBarRouter(navigationShell: navigationShell),
@@ -50,8 +65,8 @@ class Routes extends StatelessWidget {
               StatefulShellBranch(
                 routes: [
                   GoRoute(
-                    path: '/tests',
-                    builder: (context, state) => const TestPage(),
+                    path: '/diary',
+                    builder: (context, state) => const DiaryPage(),
                   ),
                 ],
               ),
@@ -59,7 +74,9 @@ class Routes extends StatelessWidget {
                 routes: [
                   GoRoute(
                     path: '/profile',
-                    builder: (context, state) => const ProfilePage(),
+                    builder: (context, state) => ProfilePageRouter(
+                      userData: userData,
+                    ),
                   ),
                 ],
               ),

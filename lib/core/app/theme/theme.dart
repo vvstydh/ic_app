@@ -15,4 +15,10 @@ final theme = ThemeData(
           fontFamily: 'BebasNeue', fontWeight: FontWeight.bold, fontSize: 18),
       labelSmall: TextStyle(
           fontFamily: 'BebasNeue', fontWeight: FontWeight.bold, fontSize: 15),
+      bodyMedium: TextStyle(
+        fontFamily: 'BebasNeue',
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        color: Color.fromARGB(255, 255, 250, 246),
+      ),
     ));

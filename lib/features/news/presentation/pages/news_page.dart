@@ -22,10 +22,11 @@ class NewsPage extends StatelessWidget {
     return Scaffold(
         extendBody: true,
         backgroundColor: theme.colorScheme.primary,
-        appBar: const AppAppbar(
+        appBar: AppAppbar(
           appBarText: 'Новости',
           height: 40,
           back: false,
+          color: theme.colorScheme.primary,
         ),
         body: SwipeRefresh.adaptive(
             stateStream: _stream,
@@ -33,6 +34,7 @@ class NewsPage extends StatelessWidget {
               await newsList.getNewsList();
               _controller.sink.add(SwipeRefreshState.hidden);
             },
+            indicatorColor: theme.colorScheme.secondary,
             padding: const EdgeInsets.only(top: 10, bottom: 120),
             children: [
               LatestNewsList(

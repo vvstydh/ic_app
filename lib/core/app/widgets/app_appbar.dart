@@ -7,21 +7,25 @@ class AppAppbar extends StatelessWidget implements PreferredSizeWidget {
       {super.key,
       required this.appBarText,
       required this.height,
-      required this.back});
+      required this.back,
+      required this.color});
   final String appBarText;
   final double height;
   final bool back;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        backgroundColor: theme.colorScheme.primary,
-        surfaceTintColor: theme.colorScheme.primary,
+        backgroundColor: color,
+        surfaceTintColor: color,
         centerTitle: true,
-        title: Text(
-          appBarText,
-          style: theme.textTheme.labelLarge,
-        ),
+        title: Transform.translate(
+            offset: Offset(0, 3),
+            child: Text(
+              appBarText,
+              style: theme.textTheme.labelLarge,
+            )),
         leading: back
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),

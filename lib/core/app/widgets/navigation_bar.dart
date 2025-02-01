@@ -32,33 +32,33 @@ class NavigationBarRouter extends StatelessWidget {
                 ),
                 title: Text(
                   'Новости',
-                  style: theme.textTheme.labelMedium,
+                  style: theme.textTheme.labelSmall,
                 ),
                 selectedTitle: Text(
                   'Новости',
-                  style: theme.textTheme.labelMedium,
+                  style: theme.textTheme.labelSmall,
                 ),
               ),
               CustomNavigationBarItem(
                 icon: const Icon(Icons.analytics_rounded),
                 title: Text(
-                  'Тесты',
-                  style: theme.textTheme.labelMedium,
+                  'Дневник',
+                  style: theme.textTheme.labelSmall,
                 ),
                 selectedTitle: Text(
-                  'Тесты',
-                  style: theme.textTheme.labelMedium,
+                  'Дневник',
+                  style: theme.textTheme.labelSmall,
                 ),
               ),
               CustomNavigationBarItem(
                 icon: const Icon(Icons.face_6_rounded),
                 title: Text(
                   'Профиль',
-                  style: theme.textTheme.labelMedium,
+                  style: theme.textTheme.labelSmall,
                 ),
                 selectedTitle: Text(
                   'Профиль',
-                  style: theme.textTheme.labelMedium,
+                  style: theme.textTheme.labelSmall,
                 ),
               ),
             ],

@@ -2,6 +2,7 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
+import 'package:ic_app/features/news/domain/news_list.dart';
 
 class GoRouterSplashScreen extends StatefulWidget {
   const GoRouterSplashScreen({super.key});
@@ -15,15 +16,13 @@ class _GoRouterSplashScreenState extends State<GoRouterSplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FlutterSplashScreen.fadeIn(
-      backgroundColor: theme.colorScheme.primary,
-      childWidget: SizedBox(
-        height: 250,
-        width: 250,
-        child: Image.asset("assets/images/splash.png"),
-      ),
+    return FlutterSplashScreen.gif(
+      gifPath: 'assets/images/splash.gif',
+      gifWidth: 250,
+      gifHeight: 250,
+      backgroundColor: Colors.white,
       asyncNavigationCallback: () async {
-        await Future.delayed(const Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 6));
         if (context.mounted) {
           context.replace('/news');
         }
