@@ -5,7 +5,6 @@ import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/app_appbar.dart';
 import 'package:ic_app/features/news/domain/news_list.dart';
 import 'package:ic_app/features/news/presentation/widgets/latest_news_list.dart';
-import 'package:ic_app/features/news/presentation/widgets/previous_news_card.dart';
 import 'package:ic_app/features/news/presentation/widgets/previous_news_list.dart';
 import 'package:swipe_refresh/swipe_refresh.dart';
 
@@ -41,7 +40,7 @@ class NewsPage extends StatelessWidget {
                 newsList: newsList,
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                margin: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                 child: Text(
                   'Предыдущие новости',
                   style: theme.textTheme.labelLarge,

@@ -24,7 +24,7 @@ final theme = ThemeData(
         color: Color.fromARGB(255, 255, 250, 246),
       ),
     ),
-    textSelectionTheme: TextSelectionThemeData(
-      selectionColor: const Color.fromARGB(255, 0, 0, 0),
-      selectionHandleColor: const Color.fromARGB(255, 0, 0, 0),
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: Color.fromARGB(255, 0, 0, 0),
+      selectionHandleColor: Color.fromARGB(255, 0, 0, 0),
     ));

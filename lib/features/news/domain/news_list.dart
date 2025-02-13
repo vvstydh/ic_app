@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -14,12 +13,12 @@ abstract class NewsListStore with Store {
       ObservableList<Map<String, dynamic>>();
 
   Future<void> getNewsList() async {
-    newsList.clear();
     newsList.addAll(await fetchNewsList());
   }
 
   Future<Iterable<Map<String, dynamic>>> fetchNewsList() async {
     final response = await supabase.from('news').select('*');
+    newsList.clear();
     return List<Map<String, dynamic>>.from(response);
   }
 }

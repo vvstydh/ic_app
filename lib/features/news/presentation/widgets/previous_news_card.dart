@@ -17,13 +17,14 @@ class PreviousNewsCard extends StatelessWidget {
     return InkWell(
       onTap: () => context.push('/content', extra: index),
       child: Container(
-        margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+        margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         height: 150,
         decoration: BoxDecoration(
           color: theme.colorScheme.tertiary,
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
           boxShadow: [
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Colors.grey.withOpacity(0.5),
               blurRadius: 3,
               offset: const Offset(0, 3),
@@ -36,7 +37,7 @@ class PreviousNewsCard extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.network(
@@ -46,11 +47,11 @@ class PreviousNewsCard extends StatelessWidget {
                   ),
                 ),
                 ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 180,
                     ),
                     child: Transform.translate(
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                       child: Text(
                         title,
                         style: theme.textTheme.labelMedium,

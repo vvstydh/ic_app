@@ -14,19 +14,19 @@ class PasswordInputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserData passwordVisibility = UserData();
     return Container(
-      margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-      padding: EdgeInsets.only(
+      margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+      padding: const EdgeInsets.only(
         left: 20,
       ),
       height: 40,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
         border: Border.all(color: theme.colorScheme.secondary, width: 2),
       ),
       child: Center(
           child: Observer(
               builder: (_) => Transform.translate(
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                   child: TextField(
                     controller: inputText,
                     cursorColor: theme.colorScheme.secondary,
@@ -40,7 +40,7 @@ class PasswordInputWidget extends StatelessWidget {
                       hintText: hintText,
                       hintStyle: theme.textTheme.labelMedium,
                       suffixIcon: Transform.translate(
-                          offset: Offset(0, -5),
+                          offset: const Offset(0, -5),
                           child: IconButton(
                               color: theme.colorScheme.secondary,
                               iconSize: 25,

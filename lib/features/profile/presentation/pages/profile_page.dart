@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/app_appbar.dart';
 import 'package:ic_app/features/profile/domain/user_data.dart';
 import 'package:ic_app/features/profile/presentation/widgets/diary_widget.dart';
-import 'package:ic_app/features/profile/presentation/widgets/password_input_widget.dart';
 import 'package:ic_app/features/profile/presentation/widgets/registration_button.dart';
 import 'package:ic_app/features/profile/presentation/widgets/user_information_widget.dart';
 import 'package:swipe_refresh/swipe_refresh.dart';
@@ -73,9 +73,9 @@ class ProfilePage extends StatelessWidget {
                         )),
                   ),
                   Container(
-                      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Transform.translate(
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                           child: Observer(
                             builder: (_) => Text(
                               '${userData.userData?['name']} ${userData.userData?['surname']}',
@@ -83,9 +83,9 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ))),
                   Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: Transform.translate(
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                           child: Observer(
                             builder: (_) => Text(
                               '${userData.user?.email}',
@@ -94,8 +94,8 @@ class ProfilePage extends StatelessWidget {
                           ))),
                   Observer(
                     builder: (_) => UserInformationWidget(
-                      text: 'Курс: ${userData.userData?['course']}',
-                      needChanges: true,
+                      text: 'Должность: ${userData.userData?['position']}',
+                      needChanges: false,
                     ),
                   ),
                   Observer(
@@ -105,11 +105,12 @@ class ProfilePage extends StatelessWidget {
                       needChanges: false,
                     ),
                   ),
-                  DiaryWidget(),
+                  const DiaryWidget(),
                   RegistrationButton(
                     text: 'Выйти из аккаунта',
                     onPressed: () {
                       userData.signOut();
+                      context.go('/authentication');
                     },
                   ),
                 ],

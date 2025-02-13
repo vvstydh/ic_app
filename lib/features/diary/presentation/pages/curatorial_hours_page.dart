@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/app_appbar.dart';
+import 'package:ic_app/features/diary/domain/hour_theme.dart';
 import 'package:ic_app/features/diary/presentation/widgets/group_button.dart';
-import 'package:ic_app/features/profile/domain/user_data.dart';
 
-class DiaryPage extends StatelessWidget {
-  const DiaryPage({super.key, required this.userData});
-  final UserData userData;
+class CuratorialHoursPage extends StatelessWidget {
+  const CuratorialHoursPage(
+      {super.key, required this.groupNumber, required this.themes});
+  final String groupNumber;
+  final HourTheme themes;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class DiaryPage extends StatelessWidget {
         extendBody: true,
         backgroundColor: theme.colorScheme.primary,
         appBar: AppAppbar(
-          appBarText: 'Дневник',
+          appBarText: 'Группа $groupNumber',
           height: 40,
           back: false,
           color: theme.colorScheme.primary,
@@ -23,20 +24,18 @@ class DiaryPage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: ListView.separated(
-            itemCount: userData.groups.length,
+            itemCount: themes.hourThemeList.length,
             separatorBuilder: (BuildContext context, int index) => Divider(
               height: 10,
               thickness: 0,
+              indent: 0,
               color: theme.colorScheme.primary,
             ),
             itemBuilder: (BuildContext context, int index) {
+              final item = themes.hourThemeList[index];
               return GroupButton(
-                group: 'Группа ${userData.groups[index]}',
-                colorOfButton: Color.fromARGB(255, 103, 136, 153),
-                onPressed: () {
-                  context.push('/curatorial_hours',
-                      extra: userData.groups[index]);
-                },
+                group: item['theme'],
+                colorOfButton: theme.colorScheme.tertiary,
               );
             },
           ),

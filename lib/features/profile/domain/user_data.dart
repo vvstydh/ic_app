@@ -18,7 +18,7 @@ abstract class UserDataStore with Store {
   var supabase = Supabase.instance.client;
 
   @observable
-  User? user = null;
+  User? user;
 
   @observable
   // ignore: avoid_init_to_null
@@ -26,6 +26,9 @@ abstract class UserDataStore with Store {
 
   @observable
   String selectedCourse = 'none';
+
+  @observable
+  ObservableList<String> groups = ObservableList<String>();
 
   @action
   changePasswordVisibility() {
@@ -85,6 +88,7 @@ abstract class UserDataStore with Store {
   Future<void> getUserData() async {
     userData =
         await supabase.from('userdata').select().eq('uid', user!.id).single();
+    groups.addAll(userData['groups'].split(',').toList());
     print(userData);
   }
 

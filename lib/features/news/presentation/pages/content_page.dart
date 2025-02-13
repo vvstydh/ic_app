@@ -19,7 +19,7 @@ class ContentPage extends StatelessWidget {
       appBar: AppAppbar(
         appBarText: 'Новости',
         height: 40,
-        back: true,
+        back: false,
         color: theme.colorScheme.primary,
       ),
       body: ListView(

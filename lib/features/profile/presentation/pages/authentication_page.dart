@@ -6,10 +6,9 @@ import 'package:ic_app/features/profile/domain/user_data.dart';
 import 'package:ic_app/features/profile/presentation/widgets/login_button.dart';
 import 'package:ic_app/features/profile/presentation/widgets/login_input_widget.dart';
 import 'package:ic_app/features/profile/presentation/widgets/password_input_widget.dart';
-import 'package:ic_app/features/profile/presentation/widgets/registration_button.dart';
 
-class AuthentificationPage extends StatelessWidget {
-  const AuthentificationPage({super.key, required this.userData});
+class AuthenticationPage extends StatelessWidget {
+  const AuthenticationPage({super.key, required this.userData});
   final UserData userData;
 
   @override
@@ -54,15 +53,11 @@ class AuthentificationPage extends StatelessWidget {
                   ),
                   backgroundColor: Colors.red,
                 ));
+              } else {
+                context.replace('/news');
               }
             },
           ),
-          RegistrationButton(
-            text: 'Зарегистрироваться',
-            onPressed: () {
-              context.push('/registration');
-            },
-          )
         ],
       ),
     );

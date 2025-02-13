@@ -7,23 +7,23 @@ class DiaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+      margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Transform.translate(
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
             child: Text(
               'Заполнение дневника',
               style: theme.textTheme.labelLarge,
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 5),
+            margin: const EdgeInsets.only(top: 5),
             height: 200,
             decoration: BoxDecoration(
               color: theme.colorScheme.tertiary,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
           )
         ],

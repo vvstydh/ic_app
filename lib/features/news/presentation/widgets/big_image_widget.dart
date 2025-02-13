@@ -8,11 +8,11 @@ class BigImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         width: 300,
         decoration: BoxDecoration(
           color: theme.colorScheme.tertiary,
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
           boxShadow: [
             BoxShadow(
                 // ignore: deprecated_member_use

@@ -10,18 +10,18 @@ class LoginInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-        padding: EdgeInsets.only(
+        margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+        padding: const EdgeInsets.only(
           left: 20,
           right: 20,
         ),
         height: 40,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
           border: Border.all(color: theme.colorScheme.secondary, width: 2),
         ),
         child: Transform.translate(
-          offset: Offset(0, 3),
+          offset: const Offset(0, 3),
           child: TextField(
             cursorErrorColor: theme.colorScheme.secondary,
             controller: inputText,

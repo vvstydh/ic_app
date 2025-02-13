@@ -25,6 +25,22 @@ mixin _$UserData on UserDataStore, Store {
     });
   }
 
+  late final _$emailConfirmedAtom =
+      Atom(name: 'UserDataStore.emailConfirmed', context: context);
+
+  @override
+  bool get emailConfirmed {
+    _$emailConfirmedAtom.reportRead();
+    return super.emailConfirmed;
+  }
+
+  @override
+  set emailConfirmed(bool value) {
+    _$emailConfirmedAtom.reportWrite(value, super.emailConfirmed, () {
+      super.emailConfirmed = value;
+    });
+  }
+
   late final _$userAtom = Atom(name: 'UserDataStore.user', context: context);
 
   @override
@@ -72,6 +88,22 @@ mixin _$UserData on UserDataStore, Store {
     });
   }
 
+  late final _$groupsAtom =
+      Atom(name: 'UserDataStore.groups', context: context);
+
+  @override
+  ObservableList<String> get groups {
+    _$groupsAtom.reportRead();
+    return super.groups;
+  }
+
+  @override
+  set groups(ObservableList<String> value) {
+    _$groupsAtom.reportWrite(value, super.groups, () {
+      super.groups = value;
+    });
+  }
+
   late final _$UserDataStoreActionController =
       ActionController(name: 'UserDataStore', context: context);
 
@@ -101,9 +133,11 @@ mixin _$UserData on UserDataStore, Store {
   String toString() {
     return '''
 passwordVisibility: ${passwordVisibility},
+emailConfirmed: ${emailConfirmed},
 user: ${user},
 userData: ${userData},
-selectedCourse: ${selectedCourse}
+selectedCourse: ${selectedCourse},
+groups: ${groups}
     ''';
   }
 }

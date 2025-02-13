@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ic_app/core/app/theme/theme.dart';
-import 'package:ic_app/features/news/domain/news_list.dart';
 import 'package:ic_app/features/news/presentation/widgets/big_image_widget.dart';
 
 class LatestNewCard extends StatelessWidget {
