@@ -22,9 +22,12 @@ class Routes extends StatelessWidget {
 
     newsList.getNewsList();
     userData.userCheck();
+    if (userData.user != null) {
+      userData.getUserData();
+    }
 
     final router = GoRouter(
-      initialLocation: '/',
+      initialLocation: '/diary',
       routes: [
         GoRoute(
           path: '/',

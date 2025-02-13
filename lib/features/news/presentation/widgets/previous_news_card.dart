@@ -46,16 +46,18 @@ class PreviousNewsCard extends StatelessWidget {
                   ),
                 ),
                 ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: 180,
-                  ),
-                  child: Text(
-                    title,
-                    style: theme.textTheme.labelMedium,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
+                    constraints: BoxConstraints(
+                      maxWidth: 180,
+                    ),
+                    child: Transform.translate(
+                      offset: Offset(0, 3),
+                      child: Text(
+                        title,
+                        style: theme.textTheme.labelMedium,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )),
               ],
             ),
           ],

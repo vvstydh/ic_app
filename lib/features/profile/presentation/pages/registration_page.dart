@@ -58,9 +58,41 @@ class RegistrationPage extends StatelessWidget {
                 LoginButton(
                   text: 'Зарегистрироваться',
                   onPress: () {
-                    userData.signUp(emailText.text, passwordText.text,
-                        nameText.text, surnameText.text);
-                    context.go('/profile');
+                    if (emailText.text.isEmpty ||
+                        nameText.text.isEmpty ||
+                        surnameText.text.isEmpty ||
+                        userData.selectedCourse == 'none') {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        content: Transform.translate(
+                          offset: Offset(0, 3),
+                          child: Text('Заполните все поля!'),
+                        ),
+                        backgroundColor: Colors.red,
+                      ));
+                    } else if (passwordText.text.length < 8) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        content: Transform.translate(
+                          offset: Offset(0, 3),
+                          child: Text('Пароль должен быть больше 8и символов!'),
+                        ),
+                        backgroundColor: Colors.red,
+                      ));
+                    } else {
+                      userData.signUp(emailText.text, passwordText.text,
+                          nameText.text, surnameText.text);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        content: Transform.translate(
+                          offset: Offset(0, 3),
+                          child: Text('Подтвердите вашу почту!'),
+                        ),
+                        backgroundColor: Colors.red,
+                      ));
+
+                      context.go('/profile');
+                    }
                   },
                 )
               ],

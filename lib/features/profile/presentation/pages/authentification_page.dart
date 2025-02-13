@@ -43,11 +43,26 @@ class AuthentificationPage extends StatelessWidget {
           ),
           LoginButton(
             text: 'Войти',
-            onPress: () {
-              userData.signIn(emailText.text, passwordText.text);
+            onPress: () async {
+              await userData.signIn(emailText.text, passwordText.text);
+              if (userData.user == null) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  behavior: SnackBarBehavior.floating,
+                  content: Transform.translate(
+                    offset: Offset(0, 3),
+                    child: Text('Неверный логин или пароль'),
+                  ),
+                  backgroundColor: Colors.red,
+                ));
+              }
             },
           ),
-          RegistrationButton()
+          RegistrationButton(
+            text: 'Зарегистрироваться',
+            onPressed: () {
+              context.push('/registration');
+            },
+          )
         ],
       ),
     );

@@ -23,6 +23,7 @@ class LoginInputWidget extends StatelessWidget {
         child: Transform.translate(
           offset: Offset(0, 3),
           child: TextField(
+            cursorErrorColor: theme.colorScheme.secondary,
             controller: inputText,
             cursorColor: theme.colorScheme.secondary,
             minLines: 1,

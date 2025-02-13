@@ -50,5 +50,11 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Для загрузки вашего фото профиля</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Для сохранения изображений</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Для съемки фото профиля</string>
   </dict>
 </plist>

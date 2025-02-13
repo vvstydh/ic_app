@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -8,6 +11,9 @@ class UserData = UserDataStore with _$UserData;
 abstract class UserDataStore with Store {
   @observable
   bool passwordVisibility = true;
+
+  @observable
+  bool emailConfirmed = false;
 
   var supabase = Supabase.instance.client;
 
@@ -66,6 +72,7 @@ abstract class UserDataStore with Store {
       print(res.user);
       if (res.user != null) {
         user = res.user;
+        await getUserData();
       } else {
         throw Exception('Пользователь не найден');
       }
@@ -75,9 +82,55 @@ abstract class UserDataStore with Store {
     }
   }
 
+  Future<void> getUserData() async {
+    userData =
+        await supabase.from('userdata').select().eq('uid', user!.id).single();
+    print(userData);
+  }
+
   Future<void> signOut() async {
     await supabase.auth.signOut();
     user = null;
     userData = null;
+  }
+
+  Future<void> uploadAvatar() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return null;
+
+      final user = supabase.auth.currentUser;
+      if (user == null) throw 'Пользователь не авторизован';
+
+      final fileName = '${user.id}.jpg';
+      final file = File(image.path);
+
+      await supabase.storage.from('avatars').remove([fileName]);
+
+      await supabase
+          .from('userdata')
+          .update({'avatar_url': null}).eq('uid', user.id); //
+
+      print('object');
+
+      await supabase.storage.from('avatars').upload(
+            fileName,
+            file,
+            fileOptions: const FileOptions(upsert: true),
+          );
+
+      final avatarUrl = supabase.storage.from('avatars').getPublicUrl(fileName);
+
+      await getUserData();
+
+      await supabase
+          .from('userdata')
+          .update({'avatar_url': avatarUrl}).eq('uid', user.id);
+
+      await getUserData();
+    } catch (e) {
+      print('Ошибка загрузки аватара: $e');
+      return null;
+    }
   }
 }
