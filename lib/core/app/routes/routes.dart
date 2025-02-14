@@ -4,6 +4,7 @@ import 'package:ic_app/core/app/widgets/navigation_bar.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/splash_screen.dart';
 import 'package:ic_app/features/diary/domain/hour_theme.dart';
+import 'package:ic_app/features/diary/presentation/pages/curatorial_diary.dart';
 import 'package:ic_app/features/diary/presentation/pages/curatorial_hours_page.dart';
 import 'package:ic_app/features/news/domain/news_list.dart';
 import 'package:ic_app/features/news/presentation/pages/content_page.dart';
@@ -53,10 +54,15 @@ class Routes extends StatelessWidget {
                   userData: userData,
                 )),
         GoRoute(
-            path: '/curatorial_hours',
+            path: '/curatorial_hours_page',
             builder: (context, state) => CuratorialHoursPage(
                   groupNumber: state.extra as String,
                   themes: hourThemes,
+                )),
+        GoRoute(
+            path: '/curatorial_diary',
+            builder: (context, state) => CuratorialDiary(
+                  hourThemeGroup: state.extra as String,
                 )),
         StatefulShellRoute.indexedStack(
             builder: (context, state, navigationShell) =>

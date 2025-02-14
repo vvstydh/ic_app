@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/app_appbar.dart';
 import 'package:ic_app/features/diary/domain/hour_theme.dart';
@@ -36,6 +37,10 @@ class CuratorialHoursPage extends StatelessWidget {
               return GroupButton(
                 group: item['theme'],
                 colorOfButton: theme.colorScheme.tertiary,
+                onPressed: () {
+                  context.push('/curatorial_diary',
+                      extra: '${item['theme']} $groupNumber');
+                },
               );
             },
           ),

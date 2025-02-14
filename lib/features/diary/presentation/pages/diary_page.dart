@@ -34,7 +34,7 @@ class DiaryPage extends StatelessWidget {
                 group: 'Группа ${userData.groups[index]}',
                 colorOfButton: Color.fromARGB(255, 103, 136, 153),
                 onPressed: () {
-                  context.push('/curatorial_hours',
+                  context.push('/curatorial_hours_page',
                       extra: userData.groups[index]);
                 },
               );

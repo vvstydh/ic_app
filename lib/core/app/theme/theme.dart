@@ -23,6 +23,12 @@ final theme = ThemeData(
         fontSize: 18,
         color: Color.fromARGB(255, 255, 250, 246),
       ),
+      displayMedium: TextStyle(
+        fontFamily: 'BebasNeue',
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        color: Color.fromARGB(255, 109, 109, 109),
+      ),
     ),
     textSelectionTheme: const TextSelectionThemeData(
       selectionColor: Color.fromARGB(255, 0, 0, 0),
