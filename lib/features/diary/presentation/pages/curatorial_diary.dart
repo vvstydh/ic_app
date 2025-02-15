@@ -15,7 +15,6 @@ class CuratorialDiary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime hourDate;
-    final TextEditingController curatorialTheme = TextEditingController();
     final TextEditingController description = TextEditingController();
     final TextEditingController feeling = TextEditingController();
     final TextEditingController behavior = TextEditingController();
@@ -45,13 +44,7 @@ class CuratorialDiary extends StatelessWidget {
             dayColor: theme.colorScheme.secondary,
             activeDayColor: theme.colorScheme.primary,
             activeBackgroundDayColor: const Color.fromARGB(255, 103, 136, 153),
-            selectableDayPredicate: (date) => date.day != 23,
             locale: 'en_ISO',
-          ),
-          const DiaryLabel(label: 'Тема кураторского часа'),
-          DiaryInput(
-            hint: 'Тема (обязательно)',
-            controller: curatorialTheme,
           ),
           const DiaryLabel(label: 'Описание кч/план + упражнение'),
           DiaryInput(

@@ -100,6 +100,12 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Observer(
                     builder: (_) => UserInformationWidget(
+                      text: 'Факультет: ${userData.userData?['faculty']}',
+                      needChanges: false,
+                    ),
+                  ),
+                  Observer(
+                    builder: (_) => UserInformationWidget(
                       text:
                           'Курируемые группы: ${userData.userData?['groups']}',
                       needChanges: false,
