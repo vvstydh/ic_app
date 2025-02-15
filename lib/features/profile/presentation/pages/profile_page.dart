@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/app_appbar.dart';
+import 'package:ic_app/features/diary/domain/diary_data.dart';
 import 'package:ic_app/features/profile/domain/user_data.dart';
 import 'package:ic_app/features/profile/presentation/widgets/diary_widget.dart';
 import 'package:ic_app/features/profile/presentation/widgets/registration_button.dart';

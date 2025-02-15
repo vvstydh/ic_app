@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ic_app/core/app/widgets/navigation_bar.dart';
 import 'package:ic_app/core/app/theme/theme.dart';
 import 'package:ic_app/core/app/widgets/splash_screen.dart';
+import 'package:ic_app/features/diary/domain/diary_data.dart';
 import 'package:ic_app/features/diary/domain/hour_theme.dart';
 import 'package:ic_app/features/diary/presentation/pages/curatorial_diary.dart';
 import 'package:ic_app/features/diary/presentation/pages/curatorial_hours_page.dart';
@@ -22,12 +23,14 @@ class Routes extends StatelessWidget {
     final newsList = NewsList();
     final userData = UserData();
     final hourThemes = HourTheme();
+    final diary = DiaryData();
 
     newsList.getNewsList();
     userData.userCheck();
     hourThemes.getThemeList();
     if (userData.user != null) {
       userData.getUserData();
+      diary.getDiary(userData.user?.id);
     }
 
     final router = GoRouter(
@@ -56,13 +59,16 @@ class Routes extends StatelessWidget {
         GoRoute(
             path: '/curatorial_hours_page',
             builder: (context, state) => CuratorialHoursPage(
+                  diaryData: diary,
                   groupNumber: state.extra as String,
                   themes: hourThemes,
                 )),
         GoRoute(
             path: '/curatorial_diary',
             builder: (context, state) => CuratorialDiary(
-                  hourThemeGroup: state.extra as String,
+                  diaryData: diary,
+                  userData: userData,
+                  hourThemeGroup: state.extra as List,
                 )),
         StatefulShellRoute.indexedStack(
             builder: (context, state, navigationShell) =>
@@ -82,7 +88,9 @@ class Routes extends StatelessWidget {
                   GoRoute(
                     path: '/diary',
                     builder: (context, state) => DiaryPage(
+                      diaryData: diary,
                       userData: userData,
+                      themes: hourThemes,
                     ),
                   ),
                 ],

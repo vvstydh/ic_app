@@ -72,7 +72,6 @@ abstract class UserDataStore with Store {
         email: email,
         password: password,
       );
-      print(res.user);
       if (res.user != null) {
         user = res.user;
         await getUserData();
@@ -89,7 +88,6 @@ abstract class UserDataStore with Store {
     userData =
         await supabase.from('userdata').select().eq('uid', user!.id).single();
     groups.addAll(userData['groups'].split(',').toList());
-    print(userData);
   }
 
   Future<void> signOut() async {

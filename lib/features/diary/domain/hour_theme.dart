@@ -13,8 +13,8 @@ abstract class HourThemeStore with Store {
       ObservableList<Map<String, dynamic>>();
 
   Future<void> getThemeList() async {
+    hourThemeList.clear();
     hourThemeList.addAll(await fetchThemeList());
-    print(hourThemeList);
   }
 
   Future<Iterable<Map<String, dynamic>>> fetchThemeList() async {
